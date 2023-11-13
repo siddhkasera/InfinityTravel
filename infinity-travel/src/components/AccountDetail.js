@@ -1,48 +1,109 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
+class AccountDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      name: "John Doe",
+      email: "JohnDoe@gmail.com",
+      phone: "(123)456-9101",
+      membershioNum: "345876",
+    };
+  }
 
-export default function AccountDetail() {
-  return (
-    <div style={{
-        position: 'absolute', left: '50%', top: '50%',
-        transform: 'translate(-50%, -50%)'
-    }}>
-        <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-    </div>
-    
-  );
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = async () => {
+    try {
+      const response = await fetch("https://api.example.com/data");
+      const jsonData = await response.json();
+      this.setState({ data: jsonData });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  render() {
+    const { data } = this.state;
+
+    return (
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <Card
+          sx={{
+            minWidth: 275,
+            backgroundColor: `#925FE2`,
+            color: `white`,
+          }}
+        >
+          <CardContent>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Typography variant="h5" component="div">
+                  Welcome back, John!
+                </Typography>
+                <Typography sx={{ fontSize: 14 }} gutterBottom>
+                  Here is your account information!
+                </Typography>
+              </Grid>
+              <Grid item xs={4}>
+                <Typography variant="body2" style={{ fontWeight: 600 }}>
+                  Name:
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography variant="body2">{this.state.name}</Typography>
+              </Grid>
+              <Grid item xs={4}>
+                <Typography variant="body2" style={{ fontWeight: 600 }}>
+                  Email:
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography variant="body2">{this.state.email}</Typography>
+              </Grid>
+              <Grid item xs={4}>
+                <Typography variant="body2" style={{ fontWeight: 600 }}>
+                  Phone:
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography variant="body2">{this.state.phone}</Typography>
+              </Grid>
+              <Grid item xs={4}>
+                <Typography variant="body2" style={{ fontWeight: 600 }}>
+                  #Membership:
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography variant="body2">
+                  {this.state.membershioNum}
+                </Typography>
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 }
+
+export default AccountDetail;
