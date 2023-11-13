@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import LoginForm from './components/LoginForm';
 import RegistrationForm from './components/RegistrationForm';
+import AccountDetail from './components/AccountDetail'
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,6 +17,7 @@ function App() {
       <Routes>Home
        <Route path="/signin"  element = {<LoginForm/>}> </Route>
       <Route path ="/registration" element ={<RegistrationForm/>}></Route>
+      <Route path ="/account" element ={<AccountDetail/>}></Route>
     </Routes>
       {/* <Footer1/> */}
       </Router>
