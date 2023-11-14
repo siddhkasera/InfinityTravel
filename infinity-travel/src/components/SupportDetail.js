@@ -5,6 +5,9 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import '../cssfiles/Support.css';
+import Container from '@mui/material/Container';
+import Dashboard from "./Dashboard";
+
 
 const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
@@ -15,7 +18,11 @@ const Item = styled(Box)(({ theme }) => ({
 export default class Support extends React.Component {
   render() {
     return (
-      <Box className="center-container">
+      // <Container maxWidth:{false} className="main-container" sx={{display:"flex"}}>
+          // <Box className="dashboard-box">
+          // <Dashboard/>
+          // </Box>
+      <Box className="center-container" sx={{border:1}}>
         <Card className="card-style">
           <CardContent>
             <Typography variant="h6" gutterBottom component="div">
@@ -31,6 +38,7 @@ export default class Support extends React.Component {
           </CardContent>
         </Card>
       </Box>
+      // </Container>
     );
   }
 }

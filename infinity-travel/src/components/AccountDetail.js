@@ -6,8 +6,13 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
+import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import Paper from "@mui/material/Paper";
+import Container from '@mui/material/Container';
+import Dashboard from "./Dashboard";
+
+
+const defaultTheme = createTheme();
 
 class AccountDetail extends React.Component {
   constructor(props) {
@@ -20,6 +25,7 @@ class AccountDetail extends React.Component {
       membershioNum: "345876",
     };
   }
+
 
   componentDidMount() {
     this.fetchData();
@@ -39,19 +45,27 @@ class AccountDetail extends React.Component {
     const { data } = this.state;
 
     return (
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
+      // <div
+      //   style={{
+      //     position: "absolute",
+      //     left: "50%",
+      //     top: "50%",
+      //     transform: "translate(-50%, -50%)",
+      //   }}
+      // >
+      <ThemeProvider theme={defaultTheme}>
+        <Container maxWidth={false} className="main-container" sx={{display:"flex", height:"100%", gap:2}}>
+        <Box className="dashboard">
+          <Dashboard/>
+        </Box>
+        <Box className="card-box">
         <Card
           sx={{
             minWidth: 275,
             backgroundColor: `#925FE2`,
             color: `white`,
+            marginLeft:30,
+            marginTop:30
           }}
         >
           <CardContent>
@@ -101,7 +115,10 @@ class AccountDetail extends React.Component {
             </Grid>
           </CardContent>
         </Card>
-      </div>
+        </Box>
+        </Container>
+        </ThemeProvider>
+      // </div>
     );
   }
 }
