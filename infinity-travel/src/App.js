@@ -7,7 +7,7 @@ import Dashboard from './components/Dashboard';
 import Search from './components/Search';
 import AccountDetail from './components/AccountDetail';
 import SupportDetail from './components/SupportDetail';
-import Notification from './components/Notification';
+import Notifications from './components/Notifications';
 import Home from './components/Home';
 
 
@@ -32,7 +32,7 @@ function App() {
       <Route path ="/search" element ={<Search/>}></Route>
       <Route path ="/account" element ={<AccountDetail/>}></Route>
       <Route path ="/support" element ={<SupportDetail/>}></Route>
-      <Route path ="/notification" element ={<Notification/>}></Route>
+      <Route path ="/notification" element ={<Notifications/>}></Route>
       <Route path ="/home" element ={<Home/>}></Route>
 
 
