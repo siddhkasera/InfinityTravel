@@ -20,38 +20,69 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import Dashboard from "./Dashboard";
 import axios from "axios";
 import dayjs, { Dayjs } from "dayjs";
+import FlightsList from "./FlightList";
 
 function Search() {
   const fetchFlights = async () => {
-    try {
-      console.log("debug333");
-      const flightsResult = await axios({
-        url: `https://partners.api.skyscanner.net/apiservices/v3/flights/indicative/search`,
-        method: "POST",
-        header: {
-          "x-api-key": "sh428739766321522266746152871799",
-        },
-        data: {
-          query: {
-            market: "UK",
-            locale: "en-GB",
-            currency: "GBP",
-            queryLegs: [
-              {
-                originPlace: { queryPlace: { iata: "LHR" } },
-                destinationPlace: { queryPlace: { iata: "LAX" } },
-                anytime: "true",
-              },
-            ],
-          },
-        },
-      });
-      console.log(flightsResult);
-      // dispatch(getFlights(flights.data));
-    } catch (error) {
-      console.log(error);
+    // try {
+    //   console.log("debug333");
+    //   const flightsResult = await axios({
+    //     url: `https://partners.api.skyscanner.net/apiservices/v3/flights/indicative/search`,
+    //     method: "POST",
+    //     header: {
+    //       "x-api-key": "sh428739766321522266746152871799",
+    //     },
+    //     data: {
+    //       query: {
+    //         market: "UK",
+    //         locale: "en-GB",
+    //         currency: "GBP",
+    //         queryLegs: [
+    //           {
+    //             originPlace: { queryPlace: { iata: "LHR" } },
+    //             destinationPlace: { queryPlace: { iata: "LAX" } },
+    //             anytime: "true",
+    //           },
+    //         ],
+    //       },
+    //     },
+    //   });
+    //   console.log(flightsResult);
+    //   // dispatch(getFlights(flights.data));
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    const url = 'https://partners.api.skyscanner.net/apiservices/v3/flights/live/search/create';
+
+const headers = {
+    'x-api-key': 'sh428739766321522266746152871799' // Replace with your actual API key
+};
+
+const data = {
+    query: {
+        market: "UK",
+        locale: "en-GB",
+        currency: "GBP",
+        query_legs: [{
+            origin_place_id: { iata: "LHR" }, // Replace with your origin airport IATA code
+            destination_place_id: { iata: "SIN" }, // Replace with your destination airport IATA code
+            date: { year: 2023, month: 12, day: 22 } // Replace with your desired travel date
+        }],
+        adults: 1,
+        cabin_class: "CABIN_CLASS_ECONOMY"
     }
+};
+
+axios.post('http://localhost:3001/search-flights', data,)
+    .then(response => {
+        console.log('Response:', response.data);
+        setData(response.data)
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
   };
+  const [data,setData]=React.useState({});
 
   const defaultTheme = createTheme();
 
@@ -83,6 +114,7 @@ function Search() {
   };
 
   return (
+    <>
     <Formik initialValues={initialValues} onSubmit={submitForm}>
       {(formik) => {
         const {
@@ -233,6 +265,11 @@ function Search() {
         );
       }}
     </Formik>
+      {data&&<div>
+            <h1>Flight Results</h1>
+            <FlightsList flightsData={data} />
+      </div>}
+    </>
   );
 }
 
