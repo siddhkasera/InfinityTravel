@@ -9,10 +9,7 @@ import AccountDetail from './components/AccountDetail';
 import SupportDetail from './components/SupportDetail';
 import Notifications from './components/Notifications';
 import Home from './components/Home';
-
-
-
-
+import Notifications from './components/Notification';
 
 
 import {
@@ -34,13 +31,6 @@ function App() {
       <Route path ="/support" element ={<SupportDetail/>}></Route>
       <Route path ="/notification" element ={<Notifications/>}></Route>
       <Route path ="/home" element ={<Home/>}></Route>
-
-
-
-    </Routes>
-      </Router>
-
-  
   );
 }
 
