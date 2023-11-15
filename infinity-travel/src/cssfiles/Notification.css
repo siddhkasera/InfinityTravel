@@ -1,0 +1,25 @@
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    /* Adjust the width as necessary */
+    max-width: 600px;
+    /* Adjust the max-width as necessary */
+}
+
+.header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.see-more {
+    color: #1976d2;
+    /* or your primary color */
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 1rem;
+    display: block;
+}
