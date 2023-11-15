@@ -9,43 +9,50 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SearchIcon from '@mui/icons-material/Search';
+import LogoutIcon from '@mui/icons-material/Logout';
 import {Link} from "react-router-dom";
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-    <Link to="/account">  <ListItemText primary="Account" /></Link> 
-    </ListItemButton>
+   
     <ListItemButton>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
       <Link to="/home">  <ListItemText primary="Home" /> </Link>
     </ListItemButton>
+
+    <ListItemButton>
+      <ListItemIcon>
+        <SearchIcon />
+      </ListItemIcon>
+     <Link to="/search" sx={{textDecoration:'none'}}><ListItemText primary="Search" /></Link> 
+    </ListItemButton>
+
     <ListItemButton>
       <ListItemIcon>
         <PeopleIcon />
-      </ListItemIcon>
-      <Link to="/notification"><ListItemText primary="Notifications" /></Link>
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
       </ListItemIcon>
       <Link to="/support"><ListItemText primary="Support" /></Link>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-     <Link to="/search" sx={{textDecoration:'none'}}><ListItemText primary="Search" /></Link> 
+      <NotificationsIcon />
+            </ListItemIcon>
+      <Link to="/notification"><ListItemText primary="Notifications" /></Link>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <BarChartIcon />
+        <AccountCircleIcon/>
+      </ListItemIcon>
+    <Link to="/account">  <ListItemText primary="Account" /></Link> 
+    </ListItemButton>
+    <ListItemButton>
+      <ListItemIcon>
+      <LogoutIcon/>
       </ListItemIcon>
       <ListItemText primary="Logout" />
     </ListItemButton>

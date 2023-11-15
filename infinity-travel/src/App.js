@@ -7,9 +7,8 @@ import Dashboard from './components/Dashboard';
 import Search from './components/Search';
 import AccountDetail from './components/AccountDetail';
 import SupportDetail from './components/SupportDetail';
-
-
-import Support from './components/SupportDetail';
+import Notifications from './components/Notifications';
+import Home from './components/Home';
 import Notifications from './components/Notification';
 
 
@@ -24,23 +23,14 @@ function App() {
     <Router>
 
       <Routes>Home
-        <Route path="/signin" element={<LoginForm />}> </Route>
-        <Route path="/registration" element={<RegistrationForm />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/search" element={<Search />}></Route>
-        <Route path="/account" element={<AccountDetail />}></Route>
-        <Route path="/support" element={<SupportDetail />}></Route>
-        <Route path="/signin" element={<LoginForm />}> </Route>
-        <Route path="/registration" element={<RegistrationForm />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/search" element={<Search />}></Route>
-        <Route path="/support" element={<Support />}></Route>
-        <Route path="/notifications" element={<Notifications />}></Route>
-
-      </Routes>
-    </Router>
-
-
+       <Route path="/signin"  element = {<LoginForm/>}> </Route>
+      <Route path ="/registration" element ={<RegistrationForm/>}></Route>
+      <Route path ="/dashboard" element ={<Dashboard/>}></Route>
+      <Route path ="/search" element ={<Search/>}></Route>
+      <Route path ="/account" element ={<AccountDetail/>}></Route>
+      <Route path ="/support" element ={<SupportDetail/>}></Route>
+      <Route path ="/notification" element ={<Notifications/>}></Route>
+      <Route path ="/home" element ={<Home/>}></Route>
   );
 }
 
