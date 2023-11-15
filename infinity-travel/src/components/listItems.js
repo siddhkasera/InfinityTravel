@@ -9,6 +9,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import {Link} from "react-router-dom";
 
 export const mainListItems = (
   <React.Fragment>
@@ -16,25 +17,31 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Account" />
+    <Link to="/account">  <ListItemText primary="Account" /></Link> 
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
-      <ListItemText primary="Home" />
+      <Link to="/home">  <ListItemText primary="Home" /> </Link>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Notifications" />
+      <Link to="/notification"><ListItemText primary="Notifications" /></Link>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Support" />
+      <Link to="/support"><ListItemText primary="Support" /></Link>
+    </ListItemButton>
+    <ListItemButton>
+      <ListItemIcon>
+        <BarChartIcon />
+      </ListItemIcon>
+     <Link to="/search" sx={{textDecoration:'none'}}><ListItemText primary="Search" /></Link> 
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
