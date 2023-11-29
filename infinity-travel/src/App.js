@@ -10,7 +10,7 @@ import SupportDetail from './components/SupportDetail';
 
 
 import Support from './components/SupportDetail';
-import Notifications from './components/Notification';
+import Notifications from './components/Notifications';
 
 
 import {
@@ -35,7 +35,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/search" element={<Search />}></Route>
         <Route path="/support" element={<Support />}></Route>
-        <Route path="/notifications" element={<Notifications />}></Route>
+        <Route path="/notification" element={<Notifications />}></Route>
 
       </Routes>
     </Router>
